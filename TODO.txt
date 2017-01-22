@@ -1,0 +1,13 @@
+things that need to be done:
+better readme:
+  I'll be honest, it's ugly. It needs more content and I need to know how to present it better
+p.s. the following will be done in Visio
+create a flowchart:
+  I like to diagram the program porcess so I have an idea on how the program is going to work
+create a wire diagram:
+  Just want to have an idea on how the gui will look
+
+
+
+
+The coding in this project is just a proof of concept. there is no gauarntee its going to make it in the final code.
