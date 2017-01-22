@@ -14,9 +14,13 @@ namespace passwordkeeper
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Form1());
+
+            Encryption test = new Encryption();
+            test.Encrypt_data("Franco is soooo cool. He knows how to encrypt text like they are hot cakes!", @"C:\Users\Franco Pettigrosso\Dropbox\CoolText.txt");
+            test.Decrypt_data(@"C:\Users\Franco Pettigrosso\Dropbox\CoolText.txt");
         }
     }
 }
