@@ -7,6 +7,13 @@ namespace passwordkeeper
         public Form1()
         {
             InitializeComponent();
+            
+        }
+
+        private void newToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            richTextBox1.Text = "";
+            this.Text = "new file";
         }
     }
 }
