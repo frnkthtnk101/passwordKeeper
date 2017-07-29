@@ -49,15 +49,22 @@ namespace passwordkeeper
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public bool Decrypt_data(string path)
+        public string Decrypt_data(string path)
         {
-            FileStream FSInput = new FileStream(path, FileMode.Open, FileAccess.Read);
-            ICryptoTransform AES_decrypt = AES.CreateDecryptor();
-            CryptoStream cryptostream = new CryptoStream(FSInput, AES_decrypt, CryptoStreamMode.Read);
-            StreamReader reader = new StreamReader(cryptostream);
-            information = reader.ReadToEnd();
-            reader.Close();
-            return true;
+            try
+            {
+                FileStream FSInput = new FileStream(path, FileMode.Open, FileAccess.Read);
+                ICryptoTransform AES_decrypt = AES.CreateDecryptor();
+                CryptoStream cryptostream = new CryptoStream(FSInput, AES_decrypt, CryptoStreamMode.Read);
+                StreamReader reader = new StreamReader(cryptostream);
+                information = reader.ReadToEnd();
+                reader.Close();
+            }
+            catch ( Exception e)
+            {
+                information = e.Message;
+            }
+            return information;
         }
 
         public void Dispose()

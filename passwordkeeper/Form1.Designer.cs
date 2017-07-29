@@ -60,6 +60,8 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.encryptedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regularFIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,6 +107,9 @@
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.encryptedFileToolStripMenuItem,
+            this.regularFIleToolStripMenuItem});
             this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
@@ -308,6 +313,19 @@
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
+            // encryptedFileToolStripMenuItem
+            // 
+            this.encryptedFileToolStripMenuItem.Name = "encryptedFileToolStripMenuItem";
+            this.encryptedFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.encryptedFileToolStripMenuItem.Text = "Encrypted File";
+            this.encryptedFileToolStripMenuItem.Click += new System.EventHandler(this.encryptedFileToolStripMenuItem_Click);
+            // 
+            // regularFIleToolStripMenuItem
+            // 
+            this.regularFIleToolStripMenuItem.Name = "regularFIleToolStripMenuItem";
+            this.regularFIleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.regularFIleToolStripMenuItem.Text = "Regular FIle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +377,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem encryptedFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regularFIleToolStripMenuItem;
     }
 }
 
