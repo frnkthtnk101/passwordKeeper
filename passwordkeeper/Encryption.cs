@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
@@ -10,7 +8,6 @@ namespace passwordkeeper
     public class Encryption  : IDisposable
     {    
         private AesCryptoServiceProvider AES;
-        private static string key, IV;
         private string information;
         public Encryption()
         {
@@ -60,7 +57,7 @@ namespace passwordkeeper
                 information = reader.ReadToEnd();
                 reader.Close();
             }
-            catch ( Exception e)
+            catch(Exception e)
             {
                 information = e.Message;
             }
