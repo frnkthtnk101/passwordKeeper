@@ -7,25 +7,18 @@ using System.IO;
 
 namespace passwordkeeper
 {
-    class Encryption
+    public class Encryption  : IDisposable
     {    
         private AesCryptoServiceProvider AES;
         private static string key, IV;
         private string information;
         public Encryption()
         {
-        }
-        private void set_encryptor()
-        {
-            
-          
-            key = "3h8wksgjeuYkqktZps1tS3VHACvtksFP";
-            IV = "9DZI4cbcJnkpppg9";
             AES = new AesCryptoServiceProvider();
             AES.BlockSize = 128;
             AES.KeySize = 256;
-            AES.IV = ASCIIEncoding.ASCII.GetBytes(IV);
-            AES.Key = ASCIIEncoding.ASCII.GetBytes(key);
+            AES.IV = ASCIIEncoding.ASCII.GetBytes("9DZI4cbcJnkpppg9"); // figure out a better method
+            AES.Key = ASCIIEncoding.ASCII.GetBytes("3h8wksgjeuYkqktZps1tS3VHACvtksFP"); // figure out a better method
             AES.Padding = PaddingMode.PKCS7;
             AES.Mode = CipherMode.CBC;
         }
@@ -36,7 +29,6 @@ namespace passwordkeeper
         {
             try
             {
-                set_encryptor();
                 FileStream FsEncrypt = new FileStream(path, FileMode.Create, FileAccess.Write);
                 ICryptoTransform AES_Encrypt = AES.CreateEncryptor();
                 CryptoStream Ocstream = new CryptoStream(FsEncrypt, AES_Encrypt, CryptoStreamMode.Write);
@@ -45,7 +37,6 @@ namespace passwordkeeper
                 Ocstream.Close();
                 FsEncrypt.Close();
                 return true;
-
             }
             catch
             {
@@ -60,7 +51,6 @@ namespace passwordkeeper
         /// <returns></returns>
         public bool Decrypt_data(string path)
         {
-            set_encryptor();
             FileStream FSInput = new FileStream(path, FileMode.Open, FileAccess.Read);
             ICryptoTransform AES_decrypt = AES.CreateDecryptor();
             CryptoStream cryptostream = new CryptoStream(FSInput, AES_decrypt, CryptoStreamMode.Read);
@@ -68,6 +58,11 @@ namespace passwordkeeper
             information = reader.ReadToEnd();
             reader.Close();
             return true;
+        }
+
+        public void Dispose()
+        {
+            AES = null;
         }
     }
 }
