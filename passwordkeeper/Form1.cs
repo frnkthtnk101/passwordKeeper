@@ -22,13 +22,27 @@ namespace passwordkeeper
         {
             string path = getpath();
             Encryption decryptor = new Encryption();
-            richTextBox1.Text = decryptor.Decrypt_data(path);
-            this.Text = Path.GetFileName(path);
+            setstage(decryptor.Decrypt_data(path), Path.GetFileName(path));
+            decryptor.Dispose();
+
+        }
+        private void regularFIleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = getpath();
+            setstage(File.ReadAllText(path), Path.GetFileName(path));
+        }
+
+        private void setstage(string content, string filename)
+        {
+            richTextBox1.Text = content;
+            this.Text = filename;
         }
 
         private string getpath()
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

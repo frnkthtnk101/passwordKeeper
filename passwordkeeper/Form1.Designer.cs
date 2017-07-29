@@ -33,6 +33,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.encryptedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regularFIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,8 +62,6 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.encryptedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.regularFIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +116,20 @@
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open";
+            // 
+            // encryptedFileToolStripMenuItem
+            // 
+            this.encryptedFileToolStripMenuItem.Name = "encryptedFileToolStripMenuItem";
+            this.encryptedFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.encryptedFileToolStripMenuItem.Text = "Encrypted File";
+            this.encryptedFileToolStripMenuItem.Click += new System.EventHandler(this.encryptedFileToolStripMenuItem_Click);
+            // 
+            // regularFIleToolStripMenuItem
+            // 
+            this.regularFIleToolStripMenuItem.Name = "regularFIleToolStripMenuItem";
+            this.regularFIleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.regularFIleToolStripMenuItem.Text = "Regular FIle";
+            this.regularFIleToolStripMenuItem.Click += new System.EventHandler(this.regularFIleToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
@@ -312,19 +326,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(374, 344);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
-            // 
-            // encryptedFileToolStripMenuItem
-            // 
-            this.encryptedFileToolStripMenuItem.Name = "encryptedFileToolStripMenuItem";
-            this.encryptedFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.encryptedFileToolStripMenuItem.Text = "Encrypted File";
-            this.encryptedFileToolStripMenuItem.Click += new System.EventHandler(this.encryptedFileToolStripMenuItem_Click);
-            // 
-            // regularFIleToolStripMenuItem
-            // 
-            this.regularFIleToolStripMenuItem.Name = "regularFIleToolStripMenuItem";
-            this.regularFIleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.regularFIleToolStripMenuItem.Text = "Regular FIle";
             // 
             // Form1
             // 
