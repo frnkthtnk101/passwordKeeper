@@ -30,7 +30,7 @@ STUFF THAT CAN BE DONE IN THE FUTURE OF THIS PROJECT
     -more coming soon
 
 CONTRIBUTING
- This is a person project, but if you have something that can make the source code better or have suggestions on best practices please email me at c0demonkers@gmail.com
+ This is a personal project, but if you have something that can make the source code better or have suggestions on best practices please email me at c0demonkers@gmail.com
  
 Feedback
 This is going to be my first time using git-hub for a project. If you try to contact me anyother way besides email, please give me time to figure it out! 
