@@ -21,26 +21,43 @@ namespace passwordkeeper
         private void encryptedFileToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             string path = getpath();
-            Encryption decryptor = new Encryption();
-            setstage(decryptor.Decrypt_data(path), Path.GetFileName(path));
-            decryptor.Dispose();
+            if (!string.IsNullOrEmpty(path))
+            {
+                Encryption decryptor = new Encryption();
+                setstage(decryptor.Decrypt_data(path), Path.GetFileName(path));
+                decryptor.Dispose();
+            }
 
         }
         private void regularFIleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string path = getpath();
-            setstage(File.ReadAllText(path), Path.GetFileName(path));
+            if (!String.IsNullOrEmpty(path))
+            {
+                setstage(File.ReadAllText(path), Path.GetFileName(path));
+            }
         }
 
         private void setstage(string content, string filename)
         {
-            richTextBox1.Text = content;
-            this.Text = filename;
+            if (!string.IsNullOrEmpty(content))
+            {
+                richTextBox1.Text = content;
+                this.Text = filename;
+            }
         }
 
         private string getpath()
         {
-            throw new NotImplementedException();
+            OpenFileDialog o = new OpenFileDialog();
+            if(o.ShowDialog() == DialogResult.OK)
+            {
+                return o.FileName;
+            }
+            else
+            {
+                return default(string);
+            }
         }
 
 
