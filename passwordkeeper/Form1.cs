@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.IO;
 using System;
+using System.Drawing.Printing;
 
 namespace passwordkeeper
 {
@@ -71,6 +72,22 @@ namespace passwordkeeper
                 encryptor.Dispose();
 
             }
+        }
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog s = new SaveFileDialog();
+            if (s.ShowDialog() == DialogResult.OK)
+            {
+                Encryption encryptor = new Encryption();
+                this.Text = Path.GetFileName(s.FileName);
+                encryptor.Encrypt_data(richTextBox1.Text, s.FileName);
+                encryptor.Dispose();
+
+            }
+        }
+        private void printToolStripMenuItem_Click(object sender, EventArgs e , System.Drawing.Printing.PrintPageEventArgs t)
+        {
+            throw new NotImplementedException();
         }
     }
 }
