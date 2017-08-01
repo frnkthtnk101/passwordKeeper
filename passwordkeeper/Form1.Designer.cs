@@ -120,14 +120,14 @@
             // encryptedFileToolStripMenuItem
             // 
             this.encryptedFileToolStripMenuItem.Name = "encryptedFileToolStripMenuItem";
-            this.encryptedFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.encryptedFileToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.encryptedFileToolStripMenuItem.Text = "Encrypted File";
             this.encryptedFileToolStripMenuItem.Click += new System.EventHandler(this.encryptedFileToolStripMenuItem_Click);
             // 
             // regularFIleToolStripMenuItem
             // 
             this.regularFIleToolStripMenuItem.Name = "regularFIleToolStripMenuItem";
-            this.regularFIleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.regularFIleToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.regularFIleToolStripMenuItem.Text = "Regular FIle";
             this.regularFIleToolStripMenuItem.Click += new System.EventHandler(this.regularFIleToolStripMenuItem_Click);
             // 
@@ -144,6 +144,7 @@
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 

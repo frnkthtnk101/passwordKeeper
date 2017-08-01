@@ -60,6 +60,17 @@ namespace passwordkeeper
             }
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog s = new SaveFileDialog();
+            if(s.ShowDialog() == DialogResult.OK)
+            {
+                Encryption encryptor = new Encryption();
+                this.Text = Path.GetFileName(s.FileName);
+                encryptor.Encrypt_data(richTextBox1.Text, s.FileName);
+                encryptor.Dispose();
 
+            }
+        }
     }
 }
