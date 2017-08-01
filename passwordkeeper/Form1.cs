@@ -89,5 +89,19 @@ namespace passwordkeeper
         {
             throw new NotImplementedException();
         }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            printDialog1.Document = printDocument1;
+            if(printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
+        }
+
+        private void PrintDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString(richTextBox1.Text, new System.Drawing.Font("Arial", 40, System.Drawing.FontStyle.Regular), System.Drawing.Brushes.Black, 12, 12);
+        }
     }
 }
