@@ -2,13 +2,16 @@
 using System.IO;
 using System;
 using System.Drawing.Printing;
+using System.Collections.Generic;
 
 namespace passwordkeeper
 {
     public partial class Form1 : Form
     {
+        private Stack<string> _textboxhistory;
         public Form1()
         {
+            _textboxhistory = new Stack<string>();
             InitializeComponent();
             
         }
@@ -102,6 +105,49 @@ namespace passwordkeeper
         private void PrintDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawString(richTextBox1.Text, new System.Drawing.Font("Arial", 40, System.Drawing.FontStyle.Regular), System.Drawing.Brushes.Black, 12, 12);
+        }
+
+        private void richTextBox1_textChanged(object sender, EventArgs e)
+        {
+            _textboxhistory.Push(richTextBox1.Text);
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if(_textboxhistory.Count == 0)
+            {
+                richTextBox1.Text = "";
+            }
+            else
+            {
+                _textboxhistory.Pop();
+                if (_textboxhistory.Count > 0)
+                    richTextBox1.Text = _textboxhistory.Pop();
+                else
+                    richTextBox1.Text = "";
+            }
+        }
+
+        private void RichTextBox1_ONKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Z && (e.Control))
+            {
+                if (_textboxhistory.Count == 0)
+                {
+                    richTextBox1.Text = "";
+
+                }
+                else
+                {
+                    richTextBox1.Text = _textboxhistory.Pop();
+                }
+            }
         }
     }
 }
