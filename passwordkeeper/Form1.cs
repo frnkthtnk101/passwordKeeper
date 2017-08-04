@@ -149,5 +149,13 @@ namespace passwordkeeper
                 }
             }
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (new SureYouWannaQuit().ShowDialog() == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }
