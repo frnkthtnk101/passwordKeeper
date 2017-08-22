@@ -118,7 +118,7 @@ namespace passwordkeeper
         }
 		private void copyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			Clipboard.SetText(richTextBox1.SelectedText);
 		}
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
