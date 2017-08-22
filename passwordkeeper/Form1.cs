@@ -120,9 +120,11 @@ namespace passwordkeeper
 		{
 			Clipboard.SetText(richTextBox1.SelectedText);
 		}
+
 		private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			richTextBox1.Text=Clipboard.GetText();
+            throw new NotImplementedException();
+			richTextBox1.Text.Insert(richTextBox1.SelectionStart,Clipboard.GetText());
 		}
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
