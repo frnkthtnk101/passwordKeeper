@@ -122,9 +122,8 @@ namespace passwordkeeper
 		}
 
 		private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-            throw new NotImplementedException();
-			richTextBox1.Text.Insert(richTextBox1.SelectionStart,Clipboard.GetText());
+        {
+            richTextBox1.Paste();
 		}
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -146,7 +145,8 @@ namespace passwordkeeper
 
         private void RichTextBox1_ONKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Z && (e.Control))
+            
+            if (e.KeyCode == Keys.Z && e.Control)
             {
                 if (_textboxhistory.Count == 0)
                 {
