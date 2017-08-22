@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+﻿﻿using System.Windows.Forms;
 using System.IO;
 using System;
 using System.Drawing.Printing;
@@ -9,9 +9,11 @@ namespace passwordkeeper
     public partial class Form1 : Form
     {
         private Stack<string> _textboxhistory;
+        private Stack<string> _redoboxhistory;
         public Form1()
         {
             _textboxhistory = new Stack<string>();
+            _redoboxhistory = new Stack<string>();
             InitializeComponent();
             
         }
@@ -114,7 +116,8 @@ namespace passwordkeeper
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string temp = _redoboxhistory.Pop();
+            richTextBox1.Text = temp;
         }
 		private void copyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -135,9 +138,13 @@ namespace passwordkeeper
             }
             else
             {
-                _textboxhistory.Pop();
+                _redoboxhistory.Push(_textboxhistory.Pop());
                 if (_textboxhistory.Count > 0)
-                    richTextBox1.Text = _textboxhistory.Pop();
+                    {
+                    string temp =_textboxhistory.Pop();
+                    richTextBox1.Text = temp;
+                    temp = null;
+                    }
                 else
                     richTextBox1.Text = "";
             }
