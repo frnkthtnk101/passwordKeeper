@@ -3,6 +3,7 @@ using System.IO;
 using System;
 using System.Drawing.Printing;
 using System.Collections.Generic;
+using System.Media;
 
 namespace passwordkeeper
 {
@@ -116,8 +117,14 @@ namespace passwordkeeper
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string temp = _redoboxhistory.Pop();
-            richTextBox1.Text = temp;
+            if (_redoboxhistory.Count > 0)
+            {
+                richTextBox1.Text = _redoboxhistory.Pop();
+            }
+            else
+            {
+                SystemSounds.Beep.Play();
+            }
         }
 		private void copyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -134,7 +141,7 @@ namespace passwordkeeper
 
             if(_textboxhistory.Count == 0)
             {
-                richTextBox1.Text = "";
+                SystemSounds.Asterisk.Play();
             }
             else
             {
@@ -146,7 +153,7 @@ namespace passwordkeeper
                     temp = null;
                     }
                 else
-                    richTextBox1.Text = "";
+                    SystemSounds.Asterisk.Play();
             }
         }
 
@@ -163,6 +170,17 @@ namespace passwordkeeper
                 else
                 {
                     richTextBox1.Text = _textboxhistory.Pop();
+                }
+            }
+            else if( e.KeyCode == Keys.Y  && e.Control)
+            {
+                if(_redoboxhistory.Count == 0)
+                {
+                    richTextBox1.Text = "";
+                }
+                else
+                {
+                    richTextBox1.Text = _redoboxhistory.Pop();
                 }
             }
         }
