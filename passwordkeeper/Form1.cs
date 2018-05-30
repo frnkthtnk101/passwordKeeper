@@ -1,17 +1,20 @@
-﻿using System.Windows.Forms;
+﻿﻿using System.Windows.Forms;
 using System.IO;
 using System;
 using System.Drawing.Printing;
 using System.Collections.Generic;
+using System.Media;
 
 namespace passwordkeeper
 {
     public partial class Form1 : Form
     {
         private Stack<string> _textboxhistory;
+        private Stack<string> _redoboxhistory;
         public Form1()
         {
             _textboxhistory = new Stack<string>();
+            _redoboxhistory = new Stack<string>();
             InitializeComponent();
             
         }
@@ -114,29 +117,50 @@ namespace passwordkeeper
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (_redoboxhistory.Count > 0)
+            {
+                richTextBox1.Text = _redoboxhistory.Pop();
+            }
+            else
+            {
+                SystemSounds.Beep.Play();
+            }
         }
+		private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(richTextBox1.SelectedText);
+		}
+
+		private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Paste();
+		}
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             if(_textboxhistory.Count == 0)
             {
-                richTextBox1.Text = "";
+                SystemSounds.Asterisk.Play();
             }
             else
             {
-                _textboxhistory.Pop();
+                _redoboxhistory.Push(_textboxhistory.Pop());
                 if (_textboxhistory.Count > 0)
-                    richTextBox1.Text = _textboxhistory.Pop();
+                    {
+                    string temp =_textboxhistory.Pop();
+                    richTextBox1.Text = temp;
+                    temp = null;
+                    }
                 else
-                    richTextBox1.Text = "";
+                    SystemSounds.Asterisk.Play();
             }
         }
 
         private void RichTextBox1_ONKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Z && (e.Control))
+            
+            if (e.KeyCode == Keys.Z && e.Control)
             {
                 if (_textboxhistory.Count == 0)
                 {
@@ -146,6 +170,17 @@ namespace passwordkeeper
                 else
                 {
                     richTextBox1.Text = _textboxhistory.Pop();
+                }
+            }
+            else if( e.KeyCode == Keys.Y  && e.Control)
+            {
+                if(_redoboxhistory.Count == 0)
+                {
+                    richTextBox1.Text = "";
+                }
+                else
+                {
+                    richTextBox1.Text = _redoboxhistory.Pop();
                 }
             }
         }
