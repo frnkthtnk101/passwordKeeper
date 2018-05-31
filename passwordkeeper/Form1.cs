@@ -159,7 +159,10 @@ namespace passwordkeeper
 
         private void RichTextBox1_ONKeyDown(object sender, KeyEventArgs e)
         {
-            
+            if(e.Modifiers == Keys.Alt && e.KeyCode == Keys.X)
+            {
+                this.cutToolStripMenuItem_Click(sender, e);
+            }
             if (e.KeyCode == Keys.Z && e.Control)
             {
                 if (_textboxhistory.Count == 0)
@@ -195,17 +198,9 @@ namespace passwordkeeper
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            richTextBox1.Cut();
         }
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
